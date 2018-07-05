@@ -9,6 +9,8 @@ using SFP.Persistencia;
 using SFP.SERVICIOS.DAO.Adm;
 using SFP.SERVICIOS.MODEL.ADM;
 using SFP.SIT.SERV.Model.Adm;
+using SERV.Dao.TABADM;
+using SFP.SIT.SERV.Dao.TABADM;
 
 namespace SFP.SERV.Services
 {
@@ -105,6 +107,46 @@ namespace SFP.SERV.Services
             TCP_Tab_AreaInd AreaMdl = null;
             /* BUSCAR LOS DATOS DE LOS TACOMETROS*/
             orga = new TCP_Tab_SeguimientoDao(_cn, _transaction, _sDataAdapter).dmlSelectSeguimientosById(dicParam);
+            return orga;
+        }
+
+
+
+
+        /******************************** Administrador *************************************/
+        public List<AreaHistorial> GetAreasByYear(Dictionary<string, object> dicParam)
+        {
+            List<AreaHistorial> orga = new List<AreaHistorial>();
+            TCP_Tab_AreaInd AreaMdl = null;
+            /* BUSCAR LOS DATOS DE LOS TACOMETROS*/
+            orga = new AreaHistorialDao(_cn, _transaction, _sDataAdapter).dmlSelectAllByYear(dicParam);
+            return orga;
+        }
+
+        public List<EstOrgDetalle> GetEstOrgByArea(Dictionary<string, object> dicParam)
+        {
+            List<EstOrgDetalle> orga = new List<EstOrgDetalle>();
+            TCP_Tab_AreaInd AreaMdl = null;
+            /* BUSCAR LOS DATOS DE LOS TACOMETROS*/
+            orga = new EstOrgDAO(_cn, _transaction, _sDataAdapter).dmlSelectByAreaYear(dicParam);
+            return orga;
+        }
+
+        public List<Indicador> GetIndByArea(Dictionary<string, object> dicParam)
+        {
+            List<Indicador> orga = new List<Indicador>();
+            TCP_Tab_AreaInd AreaMdl = null;
+            /* BUSCAR LOS DATOS DE LOS TACOMETROS*/
+            orga = new IndicadorDAO(_cn, _transaction, _sDataAdapter).GetIndicadores(dicParam);
+            return orga;
+        }
+
+        public List<Seguimiento> GetSegByInd(Dictionary<string, object> dicParam)
+        {
+            List<Seguimiento> orga = new List<Seguimiento>();
+            TCP_Tab_AreaInd AreaMdl = null;
+            /* BUSCAR LOS DATOS DE LOS TACOMETROS*/
+            orga = new SeguimientoDAO(_cn, _transaction, _sDataAdapter).dmlSelectByIndClave(dicParam);
             return orga;
         }
 

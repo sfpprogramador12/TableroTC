@@ -131,6 +131,14 @@
     <Compile Include="Dao\SOL\SIT_SOL_SEGUIMIENTODao.cs" />
     <Compile Include="Dao\SOL\SIT_SOL_SOLICITUDDao.cs" />
     <Compile Include="Dao\SOL\SIT_SOL_SOLICITUDTIPODao.cs" />
+    <Compile Include="Dao\TABADM\AreaHistorial.cs" />
+    <Compile Include="Dao\TABADM\AreaHistorialDao.cs" />
+    <Compile Include="Dao\TABADM\EstOrgDAO.cs" />
+    <Compile Include="Dao\TABADM\EstOrgDetalle.cs" />
+    <Compile Include="Dao\TABADM\Indicador.cs" />
+    <Compile Include="Dao\TABADM\IndicadorDAO.cs" />
+    <Compile Include="Dao\TABADM\Seguimiento.cs" />
+    <Compile Include="Dao\TABADM\SeguimientoDAO.cs" />
     <Compile Include="Dao\TAB\AreaIndDao.cs" />
     <Compile Include="Dao\TAB\AreaIndDocDao.cs" />
     <Compile Include="Dao\TAB\DocClasifDao.cs" />
