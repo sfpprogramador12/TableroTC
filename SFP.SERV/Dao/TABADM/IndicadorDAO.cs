@@ -81,7 +81,7 @@ namespace SFP.SIT.SERV.Dao.TABADM
 
         public List<Indicador> GetIndicadores(Dictionary<string, object> dicParam)
         {
-            String sqlQuery = " SELECT * FROM TCE_IND_INDICADOR WHERE araclave = " +dicParam["araclave"]+ " and indaño = " + dicParam["date"];
+            String sqlQuery = " SELECT * FROM TCE_IND_INDICADOR WHERE araclave = " +dicParam["araclave"]+ " and indaño = " + dicParam["date"] + "";
 
             DataTable dt = EjecutaOracleSelect(sqlQuery);
             List<Indicador> lstAdmUsuMdl = CrearListaMDL<Indicador>(dt);

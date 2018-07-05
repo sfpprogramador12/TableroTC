@@ -14,6 +14,7 @@ using SFP.SIT.SERV.Dao.TABADM;
 using SFP.SIT.SERV.Model.Adm;
 using TableroControl.Dao;
 using TableroControl.Injection;
+using Newtonsoft.Json;
 
 
 namespace TableroControl.Controllers
@@ -40,7 +41,11 @@ namespace TableroControl.Controllers
 
 
             BaseDbMdl dbMdl2 = new BaseDbMdl();
-           dbSerOracle = new DmlDbSer(dbMdl2);
+            dbMdl2.connectionString = "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=172.29.149.10)(PORT=1521)))(CONNECT_DATA=(SERVER=DEDICATED)(SID=DEV12C))); User Id=SIT; Password=Yi{sW|2XJ[; Max Pool Size= 20; Min Pool Size=1; Connection Lifetime=120; Connection Timeout=60; Incr Pool Size=1; Decr Pool Size=1;";
+            dbMdl2.objDbConnection = "Oracle.ManagedDataAccess.Client.OracleConnection, Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral,PublicKeyToken=89b483f429c47342";
+            dbMdl2.objDbTransaccion = "Oracle.ManagedDataAccess.Client.SqlTransaction, Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral,PublicKeyToken=89b483f429c47342";
+            dbMdl2.objDbDataAdapter = "Oracle.ManagedDataAccess.Client.OracleDataAdapter, Oracle.ManagedDataAccess, Version=4.122.1.0, Culture=neutral,PublicKeyToken=89b483f429c47342";
+            dbSerOracle = new DmlDbSer(dbMdl2);
         }
 
         [HttpGet("[action]")]
@@ -65,7 +70,7 @@ namespace TableroControl.Controllers
 
                     //Por cada Area se obtiene su ESTORGDETALLE
                     dicParam = new Dictionary<string, object>();
-                    dicParam.Add("date", "31/12/" + startDateIndex);
+                    dicParam.Add("date", startDateIndex);
                     dicParam.Add("araclave", ahActual.ARACLAVE.ToString());
                     List<EstOrgDetalle> estorgResult = (List<EstOrgDetalle>)dbSerOracle.operEjecutar<SFP.SERV.Services.SeguridadSer>(nameof(SFP.SERV.Services.SeguridadSer.GetEstOrgByArea), dicParam);
                     partialResult.eoclave = estorgResult[0].EODCLAVE.ToString();
@@ -74,10 +79,10 @@ namespace TableroControl.Controllers
 
                     //Por cada Area se Obtienen sus indicadores
                     dicParam = new Dictionary<string, object>();
-                    dicParam.Add("date", "31/12/" + startDateIndex);
+                    dicParam.Add("date", startDateIndex);
                     dicParam.Add("araclave", ahActual.ARACLAVE.ToString());
                     List<Indicador> indResult = (List<Indicador>)dbSerOracle.operEjecutar<SFP.SERV.Services.SeguridadSer>(nameof(SFP.SERV.Services.SeguridadSer.GetIndByArea), dicParam);
-                    partialResult.aIndicadr = indResult;
+                    partialResult.aIndicadr = JsonConvert.SerializeObject(indResult);
                     List<Seguimiento> seguimientos = new List<Seguimiento>();
 
                     foreach(Indicador indactual in indResult)
@@ -88,7 +93,7 @@ namespace TableroControl.Controllers
                         List<Seguimiento> segResult = (List<Seguimiento>)dbSerOracle.operEjecutar<SFP.SERV.Services.SeguridadSer>(nameof(SFP.SERV.Services.SeguridadSer.GetSegByInd), dicParam);
                         seguimientos.Add(segResult[0]);
                     }
-                    partialResult.iSeguimiento = seguimientos;
+                    partialResult.iSeguimiento = JsonConvert.SerializeObject(seguimientos) ;
                     resultado.Add(partialResult);
                 }
 
@@ -111,8 +116,7 @@ namespace TableroControl.Controllers
         public string eoclave {get; set;}
         public string eodreporta {get; set;}
         public string histsiglas {get; set;}
-        //public string  {get; set;}
-        public List<Indicador> aIndicadr { get; set; }
-        public List<Seguimiento> iSeguimiento { get; set; }
+        public string aIndicadr { get; set; }     // JSON
+        public string  iSeguimiento { get; set; } // JSON
     }
 }
