@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { actionCreators } from '../../store/WeatherForecasts';
+import { connect }         from 'react-redux';
+import { Link }            from 'react-router-dom';
+import { actionCreators }  from '../../store/WeatherForecasts';
+import IndicadorRegistro   from './IndicadorRegistro'
+import SeguimientoRegistro from './SeguimientoRegistro'
+import PonderacionRegistro from './PonderacionRegistro'
 
 import SortableTree, { changeNodeAtPath, addNodeUnderParent, removeNodeAtPath } from 'react-sortable-tree';
 
@@ -96,38 +99,10 @@ class Tree extends Component {
                             },
 
                             buttons: [
-                                <button
-                                    onClick={() =>
-                                        this.setState(state => ({
-                                            treeData: addNodeUnderParent({
-                                                treeData: state.treeData,
-                                                parentKey: path[path.length - 1],
-                                                expandParent: true,
-                                                getNodeKey,
-                                                newNode: {
-                                                    title: `${getRandomName()} ${
-                                                        "hola fas".split(' ')[0]
-                                                        }sson`,
-                                                },
-                                            }).treeData,
-                                        }))
-                                    }
-                                >
-                                    Agregar
-                            </button>,
-                                <button
-                                    onClick={() =>
-                                        this.setState(state => ({
-                                            treeData: removeNodeAtPath({
-                                                treeData: state.treeData,
-                                                path,
-                                                getNodeKey,
-                                            }),
-                                        }))
-                                    }
-                                >
-                                    Borrar
-                            </button>,
+                                <SeguimientoRegistro/>,
+                                <PonderacionRegistro/>,
+                                <IndicadorRegistro/>
+                               
                             ],
 
 
@@ -148,64 +123,6 @@ class Tree extends Component {
                     }}
                 />
 
-                    /*
-                    generateNodeProps={({ node, path }) => ({
-
-                        title: (
-                            <input
-                                style={{ fontSize: '1.1rem', width:'500px' }}
-                                value={node.name}
-                                onChange={event => {
-                                    const name = event.target.value;
-
-                                    this.setState(state => ({
-                                        treeData: changeNodeAtPath({
-                                            treeData: state.treeData,
-                                            path,
-                                            getNodeKey,
-                                            newNode: { ...node, name },
-                                        }),
-                                    }));
-                                }}
-                            />
-                        ),
-
-                        buttons: [
-                            <button
-                                onClick={() =>
-                                    this.setState(state => ({
-                                        treeData: addNodeUnderParent({
-                                            treeData: state.treeData,
-                                            parentKey: path[path.length - 1],
-                                            expandParent: true,
-                                            getNodeKey,
-                                            newNode: {
-                                                title: `${getRandomName()} ${
-                                                    "hola fas".split(' ')[0]
-                                                    }sson`,
-                                            },
-                                        }).treeData,
-                                    }))
-                                }
-                            >
-                            Agregar
-                            </button>,
-                            <button
-                                onClick={() =>
-                                    this.setState(state => ({
-                                        treeData: removeNodeAtPath({
-                                            treeData: state.treeData,
-                                            path,
-                                            getNodeKey,
-                                        }),
-                                    }))
-                                }
-                            >
-                            Borrar
-                            </button>,
-                        ],
-                    })}
-                />*/
             </div>
         );
     }

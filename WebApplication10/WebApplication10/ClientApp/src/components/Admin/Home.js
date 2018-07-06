@@ -7,6 +7,7 @@ import { ButtonToolbar, Button, Image, Grid, Row, Col } from 'react-bootstrap';
 import { Link, RouteComponentProps } from 'react-router-dom';
 import Tacometro from '../Tacometro'
 import Tree from './Tree'
+import IndicadorRegistro from './IndicadorRegistro'
 
 
 // This only needs to be done once; probably during your application's bootstrapping process.
@@ -53,22 +54,22 @@ class Home extends Component {
                         <span className="caret"></span>
                         </button>
                         <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
-                            <li><a  >2018</a></li>
-                            <li><a  >2017</a></li>
-                            <li><a  >2016</a></li>
-                            <li><a  >2015</a></li>
-                            <li><a  >2014</a></li>
-                            <li><a  >2013</a></li>
-                            <li><a  >2012</a></li>
-                            <li><a  >2012</a></li>
-                            <li><a  >2011</a></li>
-                            <li><a  >2010</a></li>
-                            <li><a  >2009</a></li>
-                            <li><a  >2008</a></li>
-                            <li><a  >2007</a></li>
-                            <li><a  >2006</a></li>
-                            <li><a  >2005</a></li>
-                            <li><a  >2004</a></li>
+                            <li><a>2018</a></li>
+                            <li><a>2017</a></li>
+                            <li><a>2016</a></li>
+                            <li><a>2015</a></li>
+                            <li><a>2014</a></li>
+                            <li><a>2013</a></li>
+                            <li><a>2012</a></li>
+                            <li><a>2012</a></li>
+                            <li><a>2011</a></li>
+                            <li><a>2010</a></li>
+                            <li><a>2009</a></li>
+                            <li><a>2008</a></li>
+                            <li><a>2007</a></li>
+                            <li><a>2006</a></li>
+                            <li><a>2005</a></li>
+                            <li><a>2004</a></li>
                         </ul>
                     </div>
 
