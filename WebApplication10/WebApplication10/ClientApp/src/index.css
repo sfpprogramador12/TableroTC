@@ -540,3 +540,7 @@ p.clear {
     margin-right: 10px;
 }
 
+.bt-right {
+    float: right;
+    margin-top: -15px;
+}

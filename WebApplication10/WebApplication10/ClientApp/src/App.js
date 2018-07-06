@@ -7,6 +7,7 @@ import FetchData from './components/FetchData';
 import Organigrama from './components/Organigrama';
 import Indice from './components/Indice';
 import Indicador from './components/Indicador';
+import Admin from './components/Admin/Home';
 
 export default () => (
   <Layout>
@@ -15,7 +16,8 @@ export default () => (
     <Route path='/fetchdata/:startDateIndex?' component={FetchData} />
     <Route path='/Organigrama/:startDateIndex?' component={Organigrama} />
     <Route path='/Indice/:startDateIndex?' component={Indice} />
-        <Route path='/Indicador/:startDateIndex?' component={Indicador} />
+    <Route path='/Indicador/:startDateIndex?' component={Indicador} />
+    <Route path='/Admin/' component={Admin} />
 
   </Layout>
 );
