@@ -74,7 +74,7 @@ class Home extends Component {
                     </div>
 
                     <button className="btn btn-default bt-right" type="button"  aria-haspopup="true" aria-expanded="true">
-                        Calculo Automatico 
+                        C&aacute;lculo Autom&aacute;tico 
                     </button>
                 </div>
                 <br/>

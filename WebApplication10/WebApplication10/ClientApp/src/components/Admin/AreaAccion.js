@@ -3,7 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-class PonderacionRegistro extends Component {
+class AreaAccion extends Component {
+
+   
 
     render() {
 
@@ -12,48 +14,47 @@ class PonderacionRegistro extends Component {
             buttonShow = "showed";
         }
 
+        let nombre = this.props.nombre;
 
         return <div>
-            <button type="button" className={"btn btn-info btn-xs " + buttonShow} data-toggle="modal" data-target="#myModalLabel6546AB">
-                Modificar Ponderaci&oacute;n
+            <button type="button" className={"btn btn-info btn-xs " + buttonShow} data-toggle="modal" data-target="#myModalLabel6546AD">
+                {nombre} &aacute;rea
             </button>
 
-            <div className="modal fade modalseg" id="myModalLabel6546AB" role="dialog" aria-labelledby="myModalLabel59" aria-hidden="true">
+            <div className="modal fade modalseg" id="myModalLabel6546AD" role="dialog" aria-labelledby="myModalLabel48" aria-hidden="true">
                 <div className="modal-dialog modalBig" >
                     <div className="modal-content">
                         <div className="modal-header">
                             <button type="button" className="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span className="sr-only">Close</span></button>
-                            <h3 className="modal-title" id="myModalLabel59">Modificar  Ponderaci&oacute;n</h3>
+                            <h3 className="modal-title" id="myModalLabel48">Modificar &aacute;rea</h3>
                         </div>
                         <div className="">
                             <div className="modal-body">
                                 <div className="">
-                                    <div className="">
-                                        <div className="checkbox">
-                                            <label><input type="checkbox" value="" />Asignar Ponderaci&oacute;n de forma autom&aacute;tica</label>
-                                        </div>
-                                    </div>
+
 
                                     <div className="row">
-                                        <div className="col-md-12 ml-auto">
+                                        <div className="col-md-12 ml-auto ">
+                                            <h3>{nombre} de &aacute;rea</h3>
+                                        </div>
+                                        </div>
+
+                                    <div className="row">
+                                        <div className="col-md-7 ml-auto">
                                             <table className="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th>Ponderaci&oacute;n</th>
-                                                        <th>Nombre del Indicador</th>
+                                                        <th>Nombre</th>
+                                                        
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td> <input type="text" name="" defaultValue="0" /></td>
-                                                        <td> <input type="text" name="" placeholder="Nombre del indicador" /></td>
-                                                    </tr>
+                                                    <tr><td> Nombre      </td><td> <input type="text" name="" defaultValue="0" /></td><td> <input type="text" name="" defaultValue="0" /></td></tr>
                                                 </tbody>
                                             </table>
                                         </div>
-
                                     </div>
-
+                                   
                                 </div>
                             </div>
                         </div>
@@ -66,9 +67,9 @@ class PonderacionRegistro extends Component {
                 </div>
             </div>
 
-
+            
         </div>
     }
 }
 
-export default (PonderacionRegistro);
+export default (AreaAccion);

@@ -6,6 +6,7 @@ import { actionCreators }  from '../../store/WeatherForecasts';
 import IndicadorRegistro   from './IndicadorRegistro'
 import SeguimientoRegistro from './SeguimientoRegistro'
 import PonderacionRegistro from './PonderacionRegistro'
+import AreaAccion from './AreaAccion'
 
 import SortableTree, { changeNodeAtPath, addNodeUnderParent, removeNodeAtPath } from 'react-sortable-tree';
 
@@ -29,7 +30,7 @@ class Tree extends Component {
                         subtitle: 'SCAGP',
                         children: [
                             {
-                                id: '1',
+                                id: '10',
                                 title: 'Area',
                                 subtitle: 'UCAOP',
                                 children: [
@@ -58,7 +59,7 @@ class Tree extends Component {
                            
                         ]
                     },
-                    { title: 'Area', subtitle: 'UAJ' }, { title: 'Area', subtitle: 'UAJ' }, { title: 'Area: ', subtitle: 'UAJ' }]
+                    { title: 'Area', id: '12', subtitle: 'UAJ' }, { title: 'Area', id: '13', subtitle: 'UAJ' }, { title: 'Area: ', id: '14', subtitle: 'UAJ' }]
             }],
         };
     }
@@ -67,6 +68,7 @@ class Tree extends Component {
         const getNodeKey = ({ treeIndex }) => treeIndex;
         const getRandomName = () => "AJ";
         const TEAM_COLORS = ['Blue', 'Red', 'Black', 'Green'];
+        const BUTTONS_TO_SHOW = [[0,0,0,1,1,1], [1,1,1,0,0,0]];  // de los 6 botones que existen, cuales fueron lo que se agregaron
 
         return (
             <div style={{ height: 900 }}>
@@ -88,6 +90,25 @@ class Tree extends Component {
                             }, null) || 0;
                         const playerColor = TEAM_COLORS[rootLevelIndex];
 
+                        const rootLevelIndex2 =
+                            this.state.treeData.map((acc, n, index) => {
+                                console.log(acc);
+                                if (acc.title === 'Area') {
+                                    console.log("es " + acc.title);
+                                    acc = acc.children;
+                                    return 1;
+                                    
+                                }
+                                else {
+                                    console.log("es " + acc.title);
+                                    acc = acc.children;
+                                    return 0;
+                                }
+                                
+                                return null;
+                            }, null) || 0;
+                        const show = BUTTONS_TO_SHOW[rootLevelIndex2];
+
                         return {
                             style: {
                                 width : '500px',
@@ -99,9 +120,13 @@ class Tree extends Component {
                             },
 
                             buttons: [
-                                <SeguimientoRegistro/>,
-                                <PonderacionRegistro/>,
-                                <IndicadorRegistro/>
+                                <SeguimientoRegistro show={show[0]} />,
+                                <PonderacionRegistro show={show[1]} />,
+                                <IndicadorRegistro   show={show[2]} />,
+
+                                <AreaAccion show={show[3]} nombre="Agregar"/>,
+                                <AreaAccion show={show[4]} nombre="Editar" />,
+                                <AreaAccion show={show[5]} nombre="Calcular"/>
                                
                             ],
 
@@ -122,7 +147,7 @@ class Tree extends Component {
                         };
                     }}
                 />
-
+ 
             </div>
         );
     }

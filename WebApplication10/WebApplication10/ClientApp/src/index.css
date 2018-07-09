@@ -544,3 +544,66 @@ p.clear {
     float: right;
     margin-top: -15px;
 }
+
+
+
+
+/**********************ADMINISTRADOR*********************/
+
+.textcoment {
+    width: 300px;
+    height: 150px;
+}
+
+.modalseg {
+    margin-top: -30px;
+}
+.modalseg td {
+    padding: 4px !important;
+}
+    .modalseg .form-control {
+        width: 91% !important;
+    }
+
+.modalBig2 {
+    width: 980px;
+}
+
+.modalind input {
+    height: 16px;
+    margin-right: 7px;
+}
+.modalind {
+    /*
+        margin-top: -95px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    */
+}
+.modalind .checkbox {
+    margin-top: 0px !important; 
+    margin-bottom: 0px !important; 
+}
+
+.modalind .objgrales {
+    margin-top: 15px;
+}
+
+.modal-backdrop{
+    display:none;
+}
+
+.strong-t{
+    font-weight: bold;
+}
+
+.input-lg{
+    width: 85%;
+}
+.btn{
+    margin-right:5px;
+}
+
+.hidden{
+    display: none;
+}
